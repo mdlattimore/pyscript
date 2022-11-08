@@ -138,3 +138,5 @@ dmypy.json
 node_modules/
 
 coverage/
+
+/inside_testing

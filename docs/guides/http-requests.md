@@ -95,13 +95,16 @@ concluding html code.
     <link rel="stylesheet" href="../build/pyscript.css" />
 
     <script defer src="../build/pyscript.js"></script>
-    <py-env>
-        - paths:
-          - /request.py
-    </py-env>
   </head>
 
-  <body><p>
+  <body>
+    <py-config type="json">
+        {
+            "paths": ["./request.py"]
+        }
+    </py-config>
+    
+    <p>
     Hello world request example! <br>
     Here is the output of your request:
     </p>
@@ -153,8 +156,8 @@ print(f"DELETE request=> status:{new_post.status}, json:{await new_post.json()}"
 ```
 
 ## Explanation
-### `py-env` tag for importing our Python code
-The very first thing to notice is the `py-env` tag. This tag is used to import Python files into the `PyScript`.
+### `py-config` tag for importing our Python code
+The very first thing to notice is the `py-config` tag at the top of the `body`. This tag is used, among other things, to import Python files into `PyScript`.
 In this case, we are importing the `request.py` file, which contains the `request` function we wrote above.
 
 ### `py-script` tag for making async HTTP requests.
@@ -181,7 +184,7 @@ HTTP requests are defined by standards-setting bodies in [RFC 1945](https://www.
 
 # Conclusion
 This tutorial demonstrates how to make HTTP requests using `pyfetch` and the `FetchResponse` objects. Importing Python
-code/files into the `PyScript` using the `py-env` tag is also covered.
+code/files into the `PyScript` using the `py-config` tag is also covered.
 
 Although a simple example, the principals here can be used to create complex web applications inside of `PyScript`,
 or load data into `PyScript` for use by an application, all served as a static HTML page, which is pretty amazing!
